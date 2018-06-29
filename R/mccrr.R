@@ -24,7 +24,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 }
 
 # joke package name generator from Yihui Xie @xieyihui
-tidy_name = function(x) {
+tidy_name <- function(x) {
   x = tolower(substr(abbreviate(x), 1, 4))
   paste(c(x, rep('r', 5 - nchar(x))), collapse = '')
 }
