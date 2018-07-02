@@ -33,7 +33,7 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 
 # from https://www.r-bloggers.com/copying-data-from-excel-to-r-and-back/
 # adapted for tibbles
-read_excel <- function(header=TRUE,...) {
+paste_data <- function(header=TRUE,...) {
   require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
   as.tibble(x)
