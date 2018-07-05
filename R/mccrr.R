@@ -38,7 +38,7 @@ paste_data <- function(header=TRUE,...) {
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
   as.tibble(x)
 }
-write_excel <- function(x,row.names=FALSE,col.names=TRUE,...) {
+copy_data <- function(x,row.names=FALSE,col.names=TRUE,...) {
   write.table(x,"clipboard",sep="\t",row.names=row.names,col.names=col.names,...)
 }
 
