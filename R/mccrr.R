@@ -243,3 +243,17 @@ load_data_flatfile <- function(){
     do.call(rbind, .)
   data
 }
+
+
+# https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply
+# Also a good example of tidyeval
+plot_freq <- function(data, group,  n=10){
+    group <- enquo(group)
+    data %>%
+      count(!!group) %>%
+      top_n(n) %>%
+      mutate(group := fct_reorder(!!group, n)) %>%
+      ggplot(., aes_(y=quo(n))) + 
+      geom_bar(aes(group),stat = "identity") +
+      coord_flip()
+}
