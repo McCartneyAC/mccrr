@@ -1,19 +1,25 @@
-# from Jenny Bryan @JennyBryan
-# https://twitter.com/JennyBryan/status/980978609794895872
+#' Vlookup a value
+#'
+#' from Jenny Bryan @JennyBryan
+#' https://twitter.com/JennyBryan/status/980978609794895872
+#'
+#' @param this a list of values
+#' @param data a dataset to match it to
+#' @param key the variable in the data to match on
+#' @param value  the value applied to "this"
 vlookup<-function(this,data,key,value){
-  require(tidyverse)
-  # this is a list of values
-  # data is a dataset to match it to
-  # key is the variable in the data to match on
-  # value is the value applied to "this"
   m<-match(this, data[[key]])
   data[[value]][m]
 }
 
 
-# plot a simple linear model
-# https://twitter.com/katiejolly6/status/960653271080865798
-# http://katiejolly.io/blog/2018-02-05/aes-string
+#' Plot a simple linear model
+#' https://twitter.com/katiejolly6/status/960653271080865798
+#' http://katiejolly.io/blog/2018-02-05/aes-string
+#'
+#' @param mod the linear model
+#' @param explanatory the x variable
+#' @param response the y variable
 plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
   augment(mod) %>%
     ggplot() +
@@ -30,14 +36,20 @@ tidy_name <- function(x) {
 }
 down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 
-
-# from https://www.r-bloggers.com/copying-data-from-excel-to-r-and-back/
-# adapted for tibbles
+#' Paste data from an Excel Spreadsheet
+#' from https://www.r-bloggers.com/copying-data-from-excel-to-r-and-back/
+#' adapted for tibbles
+#'
+#' @return a tibble of the pasted data
 paste_data <- function(header=TRUE,...) {
   require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
   as.tibble(x)
 }
+
+#' copy a dataframe to paste outward
+#'
+#' does not currently work
 copy_data <- function(x,row.names=FALSE,col.names=TRUE,...) {
   write.table(x,"clipboard",sep="\t",row.names=row.names,col.names=col.names,...)
 }
@@ -47,6 +59,13 @@ copy_data <- function(x,row.names=FALSE,col.names=TRUE,...) {
 mexico_city <- c("#E12100", "#CCB200", "#114511", "#9f86cb", "#000000", "#AAAAAA")
 uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92","#857363","#CAC0B6")
 
+#' Print a palette of colors
+#'
+#' Maybe stolen from Karthik Ram?
+#'
+#' @param name a color palette
+#' @param n how many colors to select
+#' @param type whether to print the colors as discrete or continuous
 palprint<- function(name, n, type = c("discrete", "continuous")) {
   type <- match.arg(type)
 
@@ -71,9 +90,13 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 
 
 
-
-# ----------------------------------------------------------------------
-# https://twitter.com/drob/status/1008409373423611904
+#' Flip a coin a few times
+#'
+#' from drob's twitter
+#' https://twitter.com/drob/status/1008409373423611904
+#'
+#' @param n how many trials to run
+#' @param m how many coinflips per trial
 coinflips<-function(n = 10000, m = 100){
   require(tidyverse)
   crossing(trial = 1:n,
@@ -106,9 +129,14 @@ load_data_flatfile <- function(){
   data
 }
 
-
-# https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply
-# Also a good example of tidyeval
+#' Plot Factors by Frequency
+#' https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply
+#'
+#' @param data a data frame
+#' @param group a variable of factors
+#' @param n how many to print into the ggplot graph
+#'
+#' @return a ggplot graph object
 plot_freq <- function(data, group,  n=10){
   group <- enquo(group)
   data %>%

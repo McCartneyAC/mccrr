@@ -1,6 +1,9 @@
-# stata summary here.
-# -------------------------------------------------
-# twitter post deleted, author lost to history
+#' Output Regression Summary in Stata Format
+#'
+#' twitter post deleted, author lost to history
+#'
+#' @param x A regression Model
+#
 stata_summary <-
   function(
     x,
@@ -9,10 +12,10 @@ stata_summary <-
     # summarize
     mod <- x
     x <- summary(x)
-    
+
     # find outcome variable
     outcome <- as.character(attr(terms(x), "variables")[[2L]])
-    
+
     # summary statistics
     ## total sum of squares
     sst <- sum((mod[["model"]][[outcome]] - mean(mod[["model"]][[outcome]], na.rm = TRUE))^2)
@@ -34,7 +37,7 @@ stata_summary <-
     arsq <- x$adj.r.squared
     ## root mse
     sigma <- x$sigma
-    
+
     # get coefficients
     coefficients <- coef(x)
     ## extract constant, reshape and rename
@@ -48,7 +51,7 @@ stata_summary <-
     )
     ## colnames
     colnames(coefficients) <- c("Coef.", "Std. Err.", "t", "P>|t|", "", "[95% Conf. Interval]")
-    
+
     ## format columns
     coef_character <- coefficients
     storage.mode(coef_character) <- "character"
@@ -57,7 +60,7 @@ stata_summary <-
       neg <- (vec < 0)
       lead_zero <- (abs(vec) < 1)
       if (isTRUE(drop_zero)) {
-        vec <- sub("^0", "", ifelse(abs(vec) > 1, 
+        vec <- sub("^0", "", ifelse(abs(vec) > 1,
                                     sprintf(paste0("%0.", max(c(2L, digits-max_digits)), "f"), abs(vec)),
                                     sprintf(paste0("%0.", digits, "f"), abs(vec))
         ))
@@ -85,11 +88,11 @@ stata_summary <-
     coef_character[,5L] <- print_width(coefficients[,5L], 7, drop_zero = TRUE)
     coef_character[,6L] <- print_width(coefficients[,6L], 7, drop_zero = TRUE)
     rownames(coef_character) <- formatC(rownames(coef_character))
-    
+
     # max variable name length
     max_nchar <- max(c(nchar(rownames(coefficients)), na.rm = TRUE), nchar("Residual"), na.rm = TRUE)
-    
-    
+
+
     # print
     nchar_n_obs <- max(c(nchar(as.character(n_obs)), 9L))
     ## summary tables
@@ -109,7 +112,7 @@ stata_summary <-
     out_mat2[,1L] <- c("Number of obs  ", fstat_padded, "Prob > F       ", "R-squared      ", "Adj R-squared  ", "Root MSE       ")
     out_mat2[,2L] <- rep(" = ", 6)
     out_mat2[,3L] <- formatC(c(n_obs, sprintf("%0.4f", c(fstat[1L], fstat_p, rsq, arsq, sigma))), width = nchar_n_obs)
-    
+
     ## print
     out <- apply(cbind(out_mat1, rep("  ", 6), out_mat2), 1L, paste0, collapse = "")
     for(i in seq_along(out)) {
@@ -117,13 +120,13 @@ stata_summary <-
     }
     rm(out)
     cat("\n")
-    
+
     ## coefficient table
     cat(rep("-", (max_nchar + 69L)), "\n", sep = "")
     cat(paste0(formatC(outcome, width = max_nchar), " |      Coef.   Std. Err.        t     P>|t|     [95% Conf. Interval]"), "\n")
     cat(rep("-", (max_nchar + 69L)), "\n", sep = "")
     for (i in seq_len(nrow(coefficients))) {
-      cat(paste0(rownames(coef_character)[i], " |  ", 
+      cat(paste0(rownames(coef_character)[i], " |  ",
                  coef_character[i,1L], "   ",
                  coef_character[i,2L], "   ",
                  coef_character[i,3L], "   ",
