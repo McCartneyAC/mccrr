@@ -1,4 +1,3 @@
-
 # Credit to J. Patrick Meyer
 omega_sq <- function(aovm){
   sum_stats <- summary(aovm)[[1]]
@@ -26,9 +25,9 @@ eta_sq<-function(aovm){
 
 
 anova_effect<-function(aovm, continuous, group){
-# 1) the anova model that we would previously have made
-# 2) the continuous variable
-# 3) the grouping variable
+  # 1) the anova model that we would previously have made
+  # 2) the continuous variable
+  # 3) the grouping variable
   sum_stats <- summary(aovm)[[1]]                  
   SSm <- sum_stats[["Sum Sq"]][1]                  
   SSr <- sum_stats[["Sum Sq"]][2]                  

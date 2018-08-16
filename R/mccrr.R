@@ -20,7 +20,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
     geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
     geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
     theme_solarized() +
-    theme(axis.title = element_text()) 
+    theme(axis.title = element_text())
 }
 
 # joke package name generator from Yihui Xie @xieyihui
@@ -45,23 +45,23 @@ copy_data <- function(x,row.names=FALSE,col.names=TRUE,...) {
 
 # frequent color palettes
 mexico_city <- c("#E12100", "#CCB200", "#114511", "#9f86cb", "#000000", "#AAAAAA")
-uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92","#857363","#CAC0B6") 
+uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92","#857363","#CAC0B6")
 
 palprint<- function(name, n, type = c("discrete", "continuous")) {
   type <- match.arg(type)
-  
+
   pal <- name
   if (is.null(pal))
     stop("Palette not found.")
-  
+
   if (missing(n)) {
     n <- length(pal)
   }
-  
+
   if (type == "discrete" && n > length(pal)) {
     stop("Number of requested colors greater than what palette can offer")
   }
-  
+
   out <- switch(type,
                 continuous = grDevices::colorRampPalette(pal)(n),
                 discrete = pal[1:n]
@@ -77,14 +77,14 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 coinflips<-function(n = 10000, m = 100){
   require(tidyverse)
   crossing(trial = 1:n,
-           flip = 1:m) %>% 
-    mutate(heads = rbinom(n(),1,0.5)) %>% 
-    group_by(trial) %>% 
+           flip = 1:m) %>%
+    mutate(heads = rbinom(n(),1,0.5)) %>%
+    group_by(trial) %>%
     mutate(next_flip = lead(heads),
-           hh = heads & next_flip, 
-           ht = heads & !next_flip) %>% 
+           hh = heads & next_flip,
+           ht = heads & !next_flip) %>%
     summarize(first_hh = which(hh)[1] + 1,
-              first_ht = which(ht)[1] + 1) %>% 
+              first_ht = which(ht)[1] + 1) %>%
     summarize(first_hh = mean(first_hh),
               first_ht = mean(first_ht))
 }
@@ -95,13 +95,13 @@ save_data_flatfile <-function(data) {
   data <-t(data)
   file_name <- paste0(paste(get_time_human(), digest(data,
                                                      algo = "md5"), sep = "_"), ".csv")
-                      write.csv(x = data, file = file.path(results_dir, file_name),
-                                row.names = FALSE, quote = FALSE)
+  write.csv(x = data, file = file.path(results_dir, file_name),
+            row.names = FALSE, quote = FALSE)
 }
 
 load_data_flatfile <- function(){
   files <-list.files(file.path(results_dir), full.names = TRUE)
-  data >= lapply(files, read.csv, stringsAsFactors = FALSE) %>% 
+  data >= lapply(files, read.csv, stringsAsFactors = FALSE) %>%
     do.call(rbind, .)
   data
 }
@@ -110,12 +110,12 @@ load_data_flatfile <- function(){
 # https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply
 # Also a good example of tidyeval
 plot_freq <- function(data, group,  n=10){
-    group <- enquo(group)
-    data %>%
-      count(!!group) %>%
-      top_n(n) %>%
-      mutate(group := fct_reorder(!!group, n)) %>%
-      ggplot(., aes_(y=quo(n))) + 
-      geom_bar(aes(group),stat = "identity") +
-      coord_flip()
+  group <- enquo(group)
+  data %>%
+    count(!!group) %>%
+    top_n(n) %>%
+    mutate(group := fct_reorder(!!group, n)) %>%
+    ggplot(., aes_(y=quo(n))) +
+    geom_bar(aes(group),stat = "identity") +
+    coord_flip()
 }
