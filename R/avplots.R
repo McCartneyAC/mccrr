@@ -20,7 +20,7 @@ gg_added_var <- function(partial, extended, se = TRUE) {
   full_residuals <- resid(extended)
   if (se) {
     avPlot <- ggplot(
-      data = data.frame(X = partial_residuals, Y = full_residuals),
+      data = data.frame(x = partial_residuals, y = full_residuals),
       aes(x = partial_residuals, y = full_residuals)
     ) +
       geom_point() +
