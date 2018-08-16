@@ -15,6 +15,9 @@ calcR2Increase <- function(baseModel, extendedModel) {
 # (combines his data manipulation and graphing of av plots
 # and removes formatting (can be added back in or adjusted as needed)
 gg_added_var <- function(partial, extended, se = TRUE) {
+  # In a multiple regression, the added variable plot for a predictor X, say, 
+  # is the plot showing the residual of Y against all predictors except X against the 
+  # residual of X on all predictors except X, of course.
   require(ggplot2)
   partial_residuals <- resid(partial)
   full_residuals <- resid(extended)
