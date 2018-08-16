@@ -2,16 +2,17 @@
 % Please edit documentation in R/av_plots.R
 \name{calcR2Increase}
 \alias{calcR2Increase}
-\title{Calculate the Percent change in R^2
- stolen directly from Steven Pollack}
+\title{Calculate the Percent change in R^2}
 \usage{
 calcR2Increase(baseModel, extendedModel)
 }
 \description{
-@param baseModel a basic regression model
- @param extendedModel an extended version of that model (i.e. with an additional variable or more)
+Stolen directly from Steven Pollack.
+https://github.com/stevenpollack/stat151a/blob/master/From_Lab/Feb-26-2014.R
 }
 \details{
+@param baseModel a basic regression model
+ @param extendedModel an extended version of that model (i.e. with an additional variable or more)
+
 @return A percent increase of the extended model's efficiency over the base model
-https://github.com/stevenpollack/stat151a/blob/master/From_Lab/Feb-26-2014.R
 }

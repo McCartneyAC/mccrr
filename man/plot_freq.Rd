@@ -2,8 +2,7 @@
 % Please edit documentation in R/mccrr.R
 \name{plot_freq}
 \alias{plot_freq}
-\title{Plot Factors by Frequency
-https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply}
+\title{Plot Factors by Frequency}
 \usage{
 plot_freq(data, group, n = 10)
 }
@@ -18,6 +17,5 @@ plot_freq(data, group, n = 10)
 a ggplot graph object
 }
 \description{
-Plot Factors by Frequency
 https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply
 }

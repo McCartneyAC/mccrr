@@ -10,6 +10,7 @@
 #' @param center the value around which you wish to center your variable (default is zero--does nothing)
 #'
 #' @return a data frame with the chosen variable centered
+#'
 center_rv <- function(df, var, center = 0) {
   # centers a running variable on user input center
   # first successful tidyeval function !!!

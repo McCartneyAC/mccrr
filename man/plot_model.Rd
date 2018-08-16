@@ -2,9 +2,7 @@
 % Please edit documentation in R/mccrr.R
 \name{plot_model}
 \alias{plot_model}
-\title{Plot a simple linear model
-https://twitter.com/katiejolly6/status/960653271080865798
-http://katiejolly.io/blog/2018-02-05/aes-string}
+\title{Plot a simple linear model}
 \usage{
 plot_model(mod, explanatory, response, .fitted = ".fitted")
 }
@@ -16,7 +14,6 @@ plot_model(mod, explanatory, response, .fitted = ".fitted")
 \item{response}{the y variable}
 }
 \description{
-Plot a simple linear model
 https://twitter.com/katiejolly6/status/960653271080865798
 http://katiejolly.io/blog/2018-02-05/aes-string
 }

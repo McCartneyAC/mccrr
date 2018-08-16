@@ -7,6 +7,7 @@
 #' @param data a dataset to match it to
 #' @param key the variable in the data to match on
 #' @param value  the value applied to "this"
+#'
 vlookup<-function(this,data,key,value){
   m<-match(this, data[[key]])
   data[[value]][m]
@@ -14,12 +15,14 @@ vlookup<-function(this,data,key,value){
 
 
 #' Plot a simple linear model
+#'
 #' https://twitter.com/katiejolly6/status/960653271080865798
 #' http://katiejolly.io/blog/2018-02-05/aes-string
 #'
 #' @param mod the linear model
 #' @param explanatory the x variable
 #' @param response the y variable
+#'
 plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
   augment(mod) %>%
     ggplot() +
@@ -34,13 +37,16 @@ tidy_name <- function(x) {
   x = tolower(substr(abbreviate(x), 1, 4))
   paste(c(x, rep('r', 5 - nchar(x))), collapse = '')
 }
+
 down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 
 #' Paste data from an Excel Spreadsheet
+#'
 #' from https://www.r-bloggers.com/copying-data-from-excel-to-r-and-back/
 #' adapted for tibbles
 #'
 #' @return a tibble of the pasted data
+#'
 paste_data <- function(header=TRUE,...) {
   require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
@@ -66,6 +72,7 @@ uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5AC
 #' @param name a color palette
 #' @param n how many colors to select
 #' @param type whether to print the colors as discrete or continuous
+#'
 palprint<- function(name, n, type = c("discrete", "continuous")) {
   type <- match.arg(type)
 
@@ -97,6 +104,7 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 #'
 #' @param n how many trials to run
 #' @param m how many coinflips per trial
+#'
 coinflips<-function(n = 10000, m = 100){
   require(tidyverse)
   crossing(trial = 1:n,
@@ -130,6 +138,7 @@ load_data_flatfile <- function(){
 }
 
 #' Plot Factors by Frequency
+#'
 #' https://stackoverflow.com/questions/46862482/plot-a-descending-frequency-bar-chart-using-a-custom-function-with-ggplot2-dply
 #'
 #' @param data a data frame
@@ -137,6 +146,7 @@ load_data_flatfile <- function(){
 #' @param n how many to print into the ggplot graph
 #'
 #' @return a ggplot graph object
+#'
 plot_freq <- function(data, group,  n=10){
   group <- enquo(group)
   data %>%

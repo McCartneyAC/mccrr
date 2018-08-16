@@ -2,10 +2,7 @@
 % Please edit documentation in R/av_plots.R
 \name{gg_added_var}
 \alias{gg_added_var}
-\title{Create an Added Variable Plot
-Adapted from Steven Pollack
-https://github.com/stevenpollack/stat151a/blob/master/From_Lab/Feb-26-2014.R
-(combines his data manipulation and graphing of av plots and removes formatting (can be added back in or adjusted as needed)}
+\title{Create an Added Variable Plot}
 \usage{
 gg_added_var(partial, extended, se = TRUE)
 }
@@ -20,7 +17,6 @@ gg_added_var(partial, extended, se = TRUE)
 a ggplot2 graph that can be extended via other ggplot2 arguments
 }
 \description{
-Create an Added Variable Plot
 Adapted from Steven Pollack
 https://github.com/stevenpollack/stat151a/blob/master/From_Lab/Feb-26-2014.R
 (combines his data manipulation and graphing of av plots and removes formatting (can be added back in or adjusted as needed)

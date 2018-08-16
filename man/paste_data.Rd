@@ -2,9 +2,7 @@
 % Please edit documentation in R/mccrr.R
 \name{paste_data}
 \alias{paste_data}
-\title{Paste data from an Excel Spreadsheet
-from https://www.r-bloggers.com/copying-data-from-excel-to-r-and-back/
-adapted for tibbles}
+\title{Paste data from an Excel Spreadsheet}
 \usage{
 paste_data(header = TRUE, ...)
 }
@@ -12,7 +10,6 @@ paste_data(header = TRUE, ...)
 a tibble of the pasted data
 }
 \description{
-Paste data from an Excel Spreadsheet
 from https://www.r-bloggers.com/copying-data-from-excel-to-r-and-back/
 adapted for tibbles
 }

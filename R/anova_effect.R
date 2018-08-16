@@ -3,6 +3,7 @@
 #' Credit to J. Patrick Meyer
 #'
 #' @param aovm An ANOVA model
+#'
 omega_sq <- function(aovm){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
@@ -19,6 +20,7 @@ omega_sq <- function(aovm){
 #' Adapted from J. Patrick Meyer
 #'
 #' @param aovm An ANOVA model
+#'
 eta_sq<-function(aovm){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
@@ -35,10 +37,8 @@ eta_sq<-function(aovm){
 #' @param aovm An ANOVA model
 #' @param continuous That model's continuous outcome
 #' @param group That model's grouping predictor variable
+#'
 anova_effect<-function(aovm, continuous, group){
-  # 1) the anova model that we would previously have made
-  # 2) the continuous variable
-  # 3) the grouping variable
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
   SSr <- sum_stats[["Sum Sq"]][2]
