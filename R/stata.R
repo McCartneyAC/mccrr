@@ -3,7 +3,8 @@
 #' twitter post deleted, author lost to history
 #'
 #' @param x A regression Model
-#
+#'
+#' @export
 stata_summary <-
   function(
     x,
