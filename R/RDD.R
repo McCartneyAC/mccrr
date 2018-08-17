@@ -11,6 +11,7 @@
 #'
 #' @return a data frame with the chosen variable centered
 #'
+#' @export
 center_rv <- function(df, var, center = 0) {
   # centers a running variable on user input center
   # first successful tidyeval function !!!
