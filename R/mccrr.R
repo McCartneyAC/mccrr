@@ -8,6 +8,7 @@
 #' @param key the variable in the data to match on
 #' @param value  the value applied to "this"
 #'
+#' @export
 vlookup<-function(this,data,key,value){
   m<-match(this, data[[key]])
   data[[value]][m]
@@ -23,6 +24,7 @@ vlookup<-function(this,data,key,value){
 #' @param explanatory the x variable
 #' @param response the y variable
 #'
+#' @export
 plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
   augment(mod) %>%
     ggplot() +
@@ -47,6 +49,7 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 #'
 #' @return a tibble of the pasted data
 #'
+#' @export
 paste_data <- function(header=TRUE,...) {
   require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
@@ -62,7 +65,9 @@ copy_data <- function(x,row.names=FALSE,col.names=TRUE,...) {
 
 
 # frequent color palettes
+#' @export
 mexico_city <- c("#E12100", "#CCB200", "#114511", "#9f86cb", "#000000", "#AAAAAA")
+#' @export
 uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92","#857363","#CAC0B6")
 
 #' Print a palette of colors
@@ -73,6 +78,7 @@ uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5AC
 #' @param n how many colors to select
 #' @param type whether to print the colors as discrete or continuous
 #'
+#' @export
 palprint<- function(name, n, type = c("discrete", "continuous")) {
   type <- match.arg(type)
 
@@ -105,6 +111,7 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 #' @param n how many trials to run
 #' @param m how many coinflips per trial
 #'
+#' @export
 coinflips<-function(n = 10000, m = 100){
   require(tidyverse)
   crossing(trial = 1:n,
@@ -147,6 +154,7 @@ load_data_flatfile <- function(){
 #'
 #' @return a ggplot graph object
 #'
+#' @export
 plot_freq <- function(data, group,  n=10){
   group <- enquo(group)
   data %>%
