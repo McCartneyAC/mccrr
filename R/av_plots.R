@@ -8,6 +8,7 @@
 #'
 #'  @return A percent increase of the extended model's efficiency over the base model
 #'
+#' @export
 calcR2Increase <- function(baseModel, extendedModel) {
   extendedModelR2 <- var(extendedModel$fitted.values)/var(Duncan$prestige)
   baseModelR2 <- var(baseModel$fitted.values)/var(Duncan$prestige)
@@ -20,7 +21,9 @@ calcR2Increase <- function(baseModel, extendedModel) {
 #' Create an Added Variable Plot
 #'
 #' Adapted from Steven Pollack
+#' 
 #' https://github.com/stevenpollack/stat151a/blob/master/From_Lab/Feb-26-2014.R
+#' 
 #' (combines his data manipulation and graphing of av plots and removes formatting (can be added back in or adjusted as needed)
 #'
 #' @param partial the model containing only the output and the variable for which you wish to graph the av plot
@@ -29,6 +32,7 @@ calcR2Increase <- function(baseModel, extendedModel) {
 #'
 #' @return a ggplot2 graph that can be extended via other ggplot2 arguments
 #'
+#' @export
 gg_added_var <- function(partial, extended, se = TRUE) {
   # In a multiple regression, the added variable plot for a predictor X, say,
   # is the plot showing the residual of Y against all predictors except X against the
