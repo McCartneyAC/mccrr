@@ -53,7 +53,7 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 paste_data <- function(header=TRUE,...) {
   require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
-  as.tibble(x)
+  as_tibble(x)
 }
 
 #' copy a dataframe to paste outward
