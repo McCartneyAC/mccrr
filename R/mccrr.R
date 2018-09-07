@@ -165,3 +165,18 @@ plot_freq <- function(data, group,  n=10){
     geom_bar(aes(group),stat = "identity") +
     coord_flip()
 }
+
+#' Summarize a Regression
+#'
+#' Reorders summarize(lm()) to allow it to be the last verb of a pipe and operate in one step. 
+#'
+#' @param df a data frame
+#'
+#' @return A regression summary
+#'
+#' @export
+regress <- function(df, ...) {
+  summary(
+    lm(data = df, ...)
+  )
+}
