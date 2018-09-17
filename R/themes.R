@@ -1,4 +1,4 @@
-theme_andrew <-function(fam = ""){
+theme_andrew <-function(fam = "Raleway"){
   # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
   theme(
     text = element_text(family = fam), 
