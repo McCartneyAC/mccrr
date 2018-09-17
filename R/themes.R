@@ -9,3 +9,9 @@ theme_andrew <-function(fam = ""){
     panel.grid.minor = element_line(colour = "grey98", size = 0.5), 
   )
 }
+
+
+theme_lighter <- function() {
+  theme_light() + 
+    theme(text = element_text(family = "SimSun-ExtB"))
+}
