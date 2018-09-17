@@ -10,7 +10,7 @@ theme_andrew <-function(fam = ""){
 }
 
 
-theme_lighter <- function() {
+theme_textbook <- function() {
   theme_light() + 
     theme(text = element_text(family = "SimSun-ExtB"))
 }
