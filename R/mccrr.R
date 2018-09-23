@@ -191,3 +191,8 @@ heart<-function(){
   with(dat, polygon(x,y, col="hotpink")) 
   points(c(10,-10, -15, 15), c(-10, -10, 10, 10), pch=169, font=5)
 }
+
+#view correctly
+view <- function(...){
+  View(...)
+}
