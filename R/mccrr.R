@@ -50,9 +50,14 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 #' @return a tibble of the pasted data
 #'
 #' @export
-paste_data <- function (...) {
-    readr::read_tsv(readr::clipboard(), ...)
-  }
+paste_data <- function(header=TRUE,...) {
+  require(tibble)
+  x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
+  as_tibble(x)
+}
+# paste_data <- function (...) {
+#     readr::read_tsv(readr::clipboard(), ...)
+#  }
 
 
 #' copy a dataframe to paste outward
