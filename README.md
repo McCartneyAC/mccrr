@@ -13,4 +13,4 @@ tidy_name = function(x) {
 }
 ```
 ## Statar
-The package currently contains some functions that are intended to bridge the code-switching problem when working in both Stata and R. `stata_summary` gives regression output in stata's format. Additional functions exist for common data manipulations that have different names in the two languages, e.g. `regress` for `lm()` and `browse` for `View`. Sometimes you just get confused and type the wrong thing. The package is here to help.
+The package currently contains some functions that are intended to bridge the code-switching problem when working in both Stata and R. `stata_summary` gives regression output in stata's format. Additional functions exist for common data manipulations that have different names in the two languages, e.g. `regress` for `lm()` and `browse` for `View()` (Also `view()` for `View()` in this package. Sometimes you just get confused and type the wrong thing. The package is here to help.
