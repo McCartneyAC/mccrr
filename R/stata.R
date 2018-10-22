@@ -1,3 +1,57 @@
+
+browse <- function(df) {
+  View(df)
+}
+
+summarize <- function(df, ...) {
+  psych::describe(df, ...)
+}
+
+tabulate <- function(df, grp) {
+  require(magrittr)
+  if (is.null(grp)) {
+    dim(df)
+  } else {
+    group <- enquo(grp)
+    df %>%
+      dplyr::group_by(!!group) %>%
+      dplyr::count()
+  }
+}
+
+gen <- function(df, ...) {
+  dplyr::mutate(df, ...)
+}
+
+clear <- function() {
+  rm(list = ls())
+}
+
+drop <- function(df) {
+  rm(df)
+}
+
+use <- function(name) {
+  csv <- ".csv"
+  xlsx <- ".xlsx"
+  dta <- ".dta"
+  sav <- ".sav"
+  if (grepl(csv, name)) {
+    readr::read_csv(name)
+  } else if (grepl(xlsx, name)) {
+    readxl::read_xlsx(name)
+  } else if (grepl(dta, name)) {
+    haven::read_dta(name)
+  } else if (grepl(sav, name)) {
+    haven::read_spss(name)
+  } else {
+    stop("unknown data type.")
+  }
+}
+
+
+
+
 #' Summarize a Regression
 #'
 #' Reorders summarize(lm()) to allow it to be the last verb of a pipe and operate in one step. 
