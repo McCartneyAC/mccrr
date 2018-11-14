@@ -34,6 +34,25 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
     theme(axis.title = element_text())
 }
 
+#' Correlation
+#' 
+#' A fixed correlation function; it should operate in a pipe and also defaults to
+#' pairwise complete observations being true. Additional arguments to base `cor()`
+#' are also available. 
+#'
+#' @param df A data frame
+#' @param x The x variable
+#' @param y The y variable
+#'
+#' @export
+correlate<-function(df, x, y, ...){
+   x <- substitute(x)
+   y <- substitute(y)
+   cx<- df %>% select(!!x)
+   cy<- df %>% select(!!y)
+  return(cor(cx, cy, use = "pairwise.complete.obs", ...))
+}
+
 # joke package name generator from Yihui Xie @xieyihui
 tidy_name <- function(x) {
   x = tolower(substr(abbreviate(x), 1, 4))
