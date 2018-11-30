@@ -19,6 +19,10 @@ vlookup<-function(this,data,key,value){
 #'
 #' Sometimes for longitudinal data, variables exist but have not been entered yet. To ensure forward compatibility, this function checks to see if any data have yet been entered for a given variable. 
 #' 
+#' works best with "select_if()" as in:
+#' data %>% select_if(is_extant)
+#'
+#'
 #' @param x a data vector
 #' @return a logical: TRUE or FALSE
 #'
