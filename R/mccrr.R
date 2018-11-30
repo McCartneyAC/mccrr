@@ -15,6 +15,16 @@ vlookup<-function(this,data,key,value){
 }
 
 
+#' Check if a variable is has data extant
+#'
+#' Sometimes for longitudinal data, variables exist but have not been entered yet. To ensure forward compatibility, this function checks to see if any data have yet been entered for a given variable. 
+#' 
+#' @param x a data vector
+#' @return a logical: TRUE or FALSE
+#'
+#' @export
+is_extant <-function(x) any(!is.na(x))
+
 #' Plot a simple linear model
 #'
 #' https://twitter.com/katiejolly6/status/960653271080865798
