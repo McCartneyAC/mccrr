@@ -20,3 +20,4 @@ center <- function(df, var, center = 0) {
   center <- enquo(center)
   mutate(df, !!varname := (!!user_var-!!center))
 }
+

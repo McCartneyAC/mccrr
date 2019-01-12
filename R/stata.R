@@ -54,7 +54,7 @@ use <- function(name) {
 
 #' Summarize a Regression
 #'
-#' Reorders summarize(lm()) to allow it to be the last verb of a pipe and operate in one step. 
+#' Reorders summarize(lm()) to allow it to be the last verb of a pipe and operate in one step.
 #'
 #' @param df a data frame
 #'

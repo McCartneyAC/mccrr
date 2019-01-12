@@ -17,8 +17,8 @@ vlookup<-function(this,data,key,value){
 
 #' Check if a variable is has data extant
 #'
-#' Sometimes for longitudinal data, variables exist but have not been entered yet. To ensure forward compatibility, this function checks to see if any data have yet been entered for a given variable. 
-#' 
+#' Sometimes for longitudinal data, variables exist but have not been entered yet. To ensure forward compatibility, this function checks to see if any data have yet been entered for a given variable.
+#'
 #' works best with "select_if()" as in:
 #' data %>% select_if(is_extant)
 #'
@@ -49,10 +49,10 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 }
 
 #' Correlation
-#' 
+#'
 #' A fixed correlation function; it should operate in a pipe and also defaults to
 #' pairwise complete observations being true. Additional arguments to base `cor()`
-#' are also available. 
+#' are also available.
 #'
 #' @param df A data frame
 #' @param x The x variable
@@ -60,10 +60,10 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 #'
 #' @export
 correlate<-function(df, x, y, ...){
-   x <- substitute(x)
-   y <- substitute(y)
-   cx<- df %>% select(!!x)
-   cy<- df %>% select(!!y)
+  x <- substitute(x)
+  y <- substitute(y)
+  cx<- df %>% select(!!x)
+  cy<- df %>% select(!!y)
   return(cor(cx, cy, use = "pairwise.complete.obs", ...))
 }
 
@@ -207,15 +207,15 @@ plot_freq <- function(data, group,  n=10){
 }
 
 #' Solve a Quadratic Equation
-#' 
-#' Just another practice function. 
+#'
+#' Just another practice function.
 #' returns roots in complex notation regardless of root form
 #'
 #' @param a the first coefficient in standard form
 #' @param b the second coefficient
 #' @param c the third coefficient
 #'
-#' @return two roots either real or imaginary. They will be in complex form notation. Roots are real if the imaginary term is 0i. If one term is 0 + 0i then there is only one root. 
+#' @return two roots either real or imaginary. They will be in complex form notation. Roots are real if the imaginary term is 0i. If one term is 0 + 0i then there is only one root.
 #'
 #' @export
 solve_quadratic<-function(a,b,c){
@@ -231,13 +231,13 @@ solve_quadratic<-function(a,b,c){
 
 # valentine's day
 heart<-function(){
-  dat<- data.frame(t=seq(0, 2*pi, by=0.1) ) 
-  xhrt <- function(t) 16*sin(t)^3 
-  yhrt <- function(t) 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t) 
-  dat$y =yhrt(dat$t) 
-  dat$x=xhrt(dat$t) 
-  plot(y ~ x, data=dat, type="l", bty="n", xaxt="n", yaxt="n", ann=FALSE) 
-  with(dat, polygon(x,y, col="hotpink")) 
+  dat<- data.frame(t=seq(0, 2*pi, by=0.1) )
+  xhrt <- function(t) 16*sin(t)^3
+  yhrt <- function(t) 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
+  dat$y =yhrt(dat$t)
+  dat$x=xhrt(dat$t)
+  plot(y ~ x, data=dat, type="l", bty="n", xaxt="n", yaxt="n", ann=FALSE)
+  with(dat, polygon(x,y, col="hotpink"))
   points(c(10,-10, -15, 15), c(-10, -10, 10, 10), pch=169, font=5)
 }
 
