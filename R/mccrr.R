@@ -206,6 +206,28 @@ plot_freq <- function(data, group,  n=10){
     coord_flip()
 }
 
+#' Solve a Quadratic Equation
+#' 
+#' Just another practice function. 
+#' returns roots in complex notation regardless of root form
+#'
+#' @param a the first coefficient in standard form
+#' @param b the second coefficient
+#' @param c the third coefficient
+#'
+#' @return two roots either real or imaginary. They will be in complex form notation. Roots are real if the imaginary term is 0i. If one term is 0 + 0i then there is only one root. 
+#'
+#' @export
+solve_quadratic<-function(a,b,c){
+  det<-sqrt(as.complex(b^2-4*a*c))
+  numerator<-(-b+det)
+  denom<-(2*a)
+  pos <- numerator/denom
+  numerator<-(-b-det)
+  neg <- numerator/denom
+  result<-c(pos,neg)
+  return(result)
+}
 
 # valentine's day
 heart<-function(){
