@@ -161,9 +161,9 @@ coinflips<-function(n = 10000, m = 100){
     mutate(next_flip = lead(heads),
            hh = heads & next_flip,
            ht = heads & !next_flip) %>%
-    summarize(first_hh = which(hh)[1] + 1,
+    summarise(first_hh = which(hh)[1] + 1,
               first_ht = which(ht)[1] + 1) %>%
-    summarize(first_hh = mean(first_hh),
+    summarise(first_hh = mean(first_hh),
               first_ht = mean(first_ht))
 }
 
