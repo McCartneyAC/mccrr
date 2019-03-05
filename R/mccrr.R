@@ -86,7 +86,7 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 paste_data <- function(header=TRUE,...) {
   require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
-  as_tibble(x)
+  tibble::as_tibble(x)
 }
 # paste_data <- function (...) {
 #     readr::read_tsv(readr::clipboard(), ...)
