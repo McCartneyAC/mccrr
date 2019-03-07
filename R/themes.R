@@ -40,7 +40,7 @@ pal_inova <- function(palette = c("inova"), alpha = 1) {
 #' Scale Colors as inova healthsystems
 #'
 #' @export scale_color_inova
-scale_color_american <- function(palette = c("inova"), alpha = 1, ...) {
+scale_color_inova <- function(palette = c("inova"), alpha = 1, ...) {
   palette <- match.arg(palette)
   ggplot2::discrete_scale("colour", "inova", pal_inova(palette, alpha), ...)
 }
@@ -50,7 +50,7 @@ scale_colour_inova<-scale_color_inova
 #' Scale fill as inova healthsystems
 #'
 #' @export scale_fill_inova
-scale_fill_american <- function(palette = c("inova"), alpha = 1, ...) {
+scale_fill_inova <- function(palette = c("inova"), alpha = 1, ...) {
   palette <- match.arg(palette)
   ggplot2::discrete_scale("fill", "inova", pal_inova(palette, alpha), ...)
 }
