@@ -12,7 +12,7 @@ theme_andrew <-function(fam = "Raleway"){
 
 theme_textbook <- function() {
   ggplot2::theme_light() + 
-    theme(text = element_text(family = "SimSun-ExtB"))
+    ggplot2::theme(text = element_text(family = "SimSun-ExtB"))
 }
 
 # frequent color palettes
