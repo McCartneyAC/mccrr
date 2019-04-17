@@ -1,6 +1,6 @@
 theme_andrew <-function(fam = "Raleway"){
   # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
-  theme(
+  ggplot2::theme(
     text = element_text(family = fam), 
     panel.background = element_blank(), 
     axis.ticks = element_line(colour = "gray"),
@@ -11,7 +11,7 @@ theme_andrew <-function(fam = "Raleway"){
 
 
 theme_textbook <- function() {
-  theme_light() + 
+  ggplot2::theme_light() + 
     theme(text = element_text(family = "SimSun-ExtB"))
 }
 
