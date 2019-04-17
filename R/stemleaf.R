@@ -41,7 +41,7 @@ theme_stemleaf <- list(
 ## ggproto part
 StatStemleaf <- ggplot2::ggproto(
   "stemleaf", 
-  Stat,
+  ggplot2::Stat,
   required_aes = c("x"), 
   
   compute_group = function(data, scales){
