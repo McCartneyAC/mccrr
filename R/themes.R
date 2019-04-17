@@ -1,18 +1,18 @@
 theme_andrew <-function(fam = "Raleway"){
   # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
   ggplot2::theme(
-    text = element_text(family = fam), 
-    panel.background = element_blank(), 
-    axis.ticks = element_line(colour = "gray"),
-    panel.grid.major = element_line(colour = "grey90", size = 0.2), 
-    panel.grid.minor = element_line(colour = "grey98", size = 0.5), 
+    text = ggplot2::element_text(family = fam), 
+    panel.background = ggplot2::element_blank(), 
+    axis.ticks = ggplot2::element_line(colour = "gray"),
+    panel.grid.major = ggplot2::element_line(colour = "grey90", size = 0.2), 
+    panel.grid.minor = ggplot2::element_line(colour = "grey98", size = 0.5), 
   )
 }
 
 
 theme_textbook <- function() {
   ggplot2::theme_light() + 
-    ggplot2::theme(text = element_text(family = "SimSun-ExtB"))
+    ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB"))
 }
 
 # frequent color palettes
