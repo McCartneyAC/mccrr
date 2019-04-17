@@ -26,7 +26,7 @@ theme_stemleaf <- theme(axis.text = element_blank(),
                         panel.grid = element_blank(),
                         axis.line=element_blank()) + 
                         coord_flip()+ 
-                        # theme_classic() +
+                        # theme_classic() + or just use theme_void() + 
                         scale_x_discrete(breaks=NULL) + # may need to remove these
                         scale_y_discrete(breaks=NULL, limits=c(0,1))
 
