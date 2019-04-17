@@ -41,11 +41,11 @@ is_extant <-function(x) any(!is.na(x))
 #' @export
 plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
   augment(mod) %>%
-    ggplot() +
-    geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
-    geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
-    theme_solarized() +
-    theme(axis.title = element_text())
+    ggplot2::ggplot() +
+    ggplot2::geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
+    ggplot2::geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
+    ggplot2::theme_solarized() +
+    ggplot2::theme(axis.title = element_text())
 }
 
 #' Correlation
@@ -145,7 +145,8 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 #'
 #' @export
 coinflips<-function(n = 10000, m = 100){
-  require(tidyverse)
+  require(dplyr)
+  require(tidyr)
   crossing(trial = 1:n,
            flip = 1:m) %>%
     mutate(heads = rbinom(n(),1,0.5)) %>%
@@ -191,11 +192,11 @@ plot_freq <- function(data, group,  n=10){
   group <- enquo(group)
   data %>%
     count(!!group) %>%
-    top_n(n) %>%
-    mutate(group := fct_reorder(!!group, n)) %>%
-    ggplot(., aes_(y=quo(n))) +
-    geom_bar(aes(group),stat = "identity") +
-    coord_flip()
+    dplyr::top_n(n) %>%
+    dplyr::mutate(group := fct_reorder(!!group, n)) %>%
+    ggplot2::ggplot(., aes_(y=quo(n))) +
+    ggplot2::geom_bar(aes(group),stat = "identity") +
+    ggplot2::coord_flip()
 }
 
 #' Solve a Quadratic Equation
