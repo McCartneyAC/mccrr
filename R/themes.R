@@ -5,7 +5,7 @@ theme_andrew <-function(fam = "Raleway"){
     panel.background = ggplot2::element_blank(), 
     axis.ticks = ggplot2::element_line(colour = "gray"),
     panel.grid.major = ggplot2::element_line(colour = "grey90", size = 0.2), 
-    panel.grid.minor = ggplot2::element_line(colour = "grey98", size = 0.5), 
+    panel.grid.minor = ggplot2::element_line(colour = "grey98", size = 0.5)
   )
 }
 
