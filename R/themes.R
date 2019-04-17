@@ -1,7 +1,7 @@
 
 theme_textbook <- function() {
   ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB")) +
-    ggplot2::theme_light() 
+    ggplot2::theme_light()
 }
 
 
@@ -56,6 +56,6 @@ scale_fill_inova <- function(palette = c("inova"), alpha = 1, ...) {
 
 # # frequent color palettes
 mexico_city <- c("#E12100", "#CCB200", "#114511", "#9f86cb", "#000000", "#AAAAAA")
-uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92", "#857363","#CAC0B6")
-acled <- c("#274f5c", "#2a788d", "#ff8f2b","#adcfee","#ffc38a","#6ba5d4","#d0671f","#1d1d1d", "#979797","#d5d5d5")
-inova <- c("#004b8d", "#d52b1e", "#6caddf", "#4d4f53", "#a5a5a9")
+uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92","#857363","#CAC0B6")
+acled <- c("#274f5c", "#2a788d", "#ff8f2b","#adcfee","#ffc38a","#6ba5d4","#d0671f","#1d1d1d","#979797","#d5d5d5")
+inova<-c("#004b8d", "#d52b1e", "#6caddf", "#4d4f53", "#a5a5a9")
