@@ -1,12 +1,35 @@
-
+#' Browse a Data Frame
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
 browse <- function(df) {
   View(df)
 }
 
+#' Summarize a Data Frame
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
 summarize <- function(df, ...) {
   psych::describe(df, ...)
 }
 
+#' Tabulate units by group. 
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
 tabulate <- function(df, grp) {
   require(magrittr)
   if (is.null(grp)) {
@@ -19,18 +42,49 @@ tabulate <- function(df, grp) {
   }
 }
 
+#' Generate a new variable
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
 gen <- function(df, ...) {
   dplyr::mutate(df, ...)
 }
 
+#' Clear all memory
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#'
+#' @export
 clear <- function() {
   rm(list = ls())
 }
 
+#' Drop an object
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#' @param df a data frame (or any other object)
+#'
+#' @export
 drop <- function(df) {
   rm(df)
 }
 
+#' Import a data set
+#'
+#' For when you forget that you're workign in R and use a STATA command instead. 
+#'
+#'
+#' @param name the file-name of the data you wish to import
+#'
+#' @export
 use <- function(name) {
   csv <- ".csv"
   xlsx <- ".xlsx"
