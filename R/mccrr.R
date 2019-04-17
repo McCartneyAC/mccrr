@@ -44,8 +44,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
     ggplot2::ggplot() +
     ggplot2::geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
     ggplot2::geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
-    ggplot2::theme_solarized() +
-    ggplot2::theme(axis.title = element_text())
+    ggplot2::theme_solarized() 
 }
 
 #' Correlation
