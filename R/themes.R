@@ -9,10 +9,10 @@
 #   )
 # }
 
-# theme_textbook <- function() {
-#  ggplot2::theme_light() %+replace%  
-#  ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB")) 
-# }
+theme_textbook <- list(
+  ggplot2::theme_light(),
+  ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB")) 
+)
 
 # frequent color palettes
 mexico_city <- c("#E12100", "#CCB200", "#114511", "#9f86cb", "#000000", "#AAAAAA")
