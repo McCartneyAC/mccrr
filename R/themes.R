@@ -1,14 +1,13 @@
-theme_andrew <-function(fam = "Raleway"){
-  # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
-  ggplot2::theme(
-    text = ggplot2::element_text(family = fam), 
-    panel.background = ggplot2::element_blank(), 
-    axis.ticks = ggplot2::element_line(colour = "gray"),
-    panel.grid.major = ggplot2::element_line(colour = "grey90", size = 0.2), 
-    panel.grid.minor = ggplot2::element_line(colour = "grey98", size = 0.5)
-  )
-}
-
+# theme_andrew <-function(fam = "Raleway"){
+#   # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
+#   ggplot2::theme(
+#     text = ggplot2::element_text(family = fam), 
+#     panel.background = ggplot2::element_blank(), 
+#     axis.ticks = ggplot2::element_line(colour = "gray"),
+#     panel.grid.major = ggplot2::element_line(colour = "grey90", size = 0.2), 
+#     panel.grid.minor = ggplot2::element_line(colour = "grey98", size = 0.5)
+#   )
+# }
 
 # theme_textbook <- function() {
 #  ggplot2::theme_light() %+replace%  
@@ -45,7 +44,7 @@ scale_color_inova <- function(palette = c("inova"), alpha = 1, ...) {
   ggplot2::discrete_scale("colour", "inova", pal_inova(palette, alpha), ...)
 }
 
-scale_colour_inova<-scale_color_inova
+scale_colour_inova <- scale_color_inova
 
 #' Scale fill as inova healthsystems
 #'
