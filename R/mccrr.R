@@ -43,8 +43,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
   augment(mod) %>%
     ggplot2::ggplot() +
     ggplot2::geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
-    ggplot2::geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
-    ggplot2::theme_solarized() 
+    ggplot2::geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63")
 }
 
 #' Correlation
@@ -83,7 +82,6 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 #'
 #' @export
 paste_data <- function(header=TRUE,...) {
-  require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
   tibble::as_tibble(x)
 }
@@ -144,18 +142,16 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 #'
 #' @export
 coinflips<-function(n = 10000, m = 100){
-  require(dplyr)
-  require(tidyr)
-  crossing(trial = 1:n,
+  tidyr::crossing(trial = 1:n,
            flip = 1:m) %>%
-    mutate(heads = rbinom(n(),1,0.5)) %>%
-    group_by(trial) %>%
-    mutate(next_flip = lead(heads),
+    dplyr::mutate(heads = rbinom(n(),1,0.5)) %>%
+    dplyr::group_by(trial) %>%
+    dplyr::mutate(next_flip = lead(heads),
            hh = heads & next_flip,
            ht = heads & !next_flip) %>%
-    summarise(first_hh = which(hh)[1] + 1,
+    dplyr::summarise(first_hh = which(hh)[1] + 1,
               first_ht = which(ht)[1] + 1) %>%
-    summarise(first_hh = mean(first_hh),
+    dplyr::summarise(first_hh = mean(first_hh),
               first_ht = mean(first_ht))
 }
 
@@ -221,17 +217,6 @@ solve_quadratic<-function(a,b,c){
   return(result)
 }
 
-# valentine's day
-heart<-function(){
-  dat<- data.frame(t=seq(0, 2*pi, by=0.1) )
-  xhrt <- function(t) 16*sin(t)^3
-  yhrt <- function(t) 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
-  dat$y =yhrt(dat$t)
-  dat$x=xhrt(dat$t)
-  plot(y ~ x, data=dat, type="l", bty="n", xaxt="n", yaxt="n", ann=FALSE)
-  with(dat, polygon(x,y, col="hotpink"))
-  points(c(10,-10, -15, 15), c(-10, -10, 10, 10), pch=169, font=5)
-}
 
 #view correctly
 view <- function(...){
