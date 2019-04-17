@@ -20,7 +20,7 @@ stemleaf_to_df<-function(df) {
 }
 
 # theme elements from above. 
-theme_stemleaf <- theme(axis.text = element_blank(),
+theme_stemleaf <- ggplot2::theme(axis.text = element_blank(),
                         axis.title = element_blank(),
                         axis.ticks=element_blank(),
                         panel.grid = element_blank(),
@@ -32,7 +32,7 @@ theme_stemleaf <- theme(axis.text = element_blank(),
 
 
 ## ggproto part
-StatStemleaf <- ggproto(
+StatStemleaf <- ggplot2::ggproto(
   "stemleaf", 
   Stat,
   required_aes = c("x"), 
