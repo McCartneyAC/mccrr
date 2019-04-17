@@ -20,15 +20,15 @@ stemleaf_to_df<-function(df) {
 }
 
 # theme elements from above. 
-theme_stemleaf <- ggplot2::theme(axis.text = element_blank(),
-                        axis.title = element_blank(),
-                        axis.ticks=element_blank(),
-                        panel.grid = element_blank(),
-                        axis.line=element_blank()) + 
-                        coord_flip()+ 
+theme_stemleaf <- ggplot2::theme(axis.text = ggplot2::element_blank(),
+                        axis.title = ggplot2::element_blank(),
+                        axis.ticks = ggplot2::element_blank(),
+                        panel.grid = ggplot2::element_blank(),
+                        axis.line = ggplot2::element_blank()) + 
+                        coord_flip ()+ 
                         # theme_classic() + or just use theme_void() + 
-                        scale_x_discrete(breaks=NULL) + # may need to remove these
-                        scale_y_discrete(breaks=NULL, limits=c(0,1))
+                        ggplot2::scale_x_discrete(breaks=NULL) + # may need to remove these
+                        ggplot2::scale_y_discrete(breaks=NULL, limits=c(0,1))
 
 
 ## ggproto part
