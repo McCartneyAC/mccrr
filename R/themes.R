@@ -6,7 +6,8 @@ theme_textbook <- function() {
 
 
 theme_andrew <-function(fam = "Raleway"){
- # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
+ # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free",
+ # "Montez", "Cinzel Decorative", "Kristi", "Sofia", "Love Ya Like A Sister", "FrederickatheGreat", "Special Elite")
  ggplot2::theme(
    text = ggplot2::element_text(family = fam),
    panel.background = ggplot2::element_blank(),
