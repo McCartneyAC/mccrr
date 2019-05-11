@@ -29,6 +29,25 @@ vlookup<-function(this,data,key,value){
 #' @export
 is_extant <-function(x) any(!is.na(x))
 
+
+
+#' Check if a variable is Numeric
+#'
+#' Sometimes you have an unknown number of variables being piped into a function that only takes numeric vectors. This function exists to select only those which will work in the final function. 
+#'
+#' works best with "select_if()" as in:
+#' data %>% select_if(is_numeric)
+#'
+#'
+#' @param x a data vector
+#' @return a logical: TRUE or FALSE
+#'
+#' @export
+is_numeric<-function(x) any(is.numeric(x))
+
+
+
+
 #' Plot a simple linear model
 #'
 #' https://twitter.com/katiejolly6/status/960653271080865798
