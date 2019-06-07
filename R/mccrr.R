@@ -68,7 +68,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 #' Correlation
 #'
 #' A fixed correlation function; it should operate in a pipe and also defaults to
-#' pairwise complete observations being true. Additional arguments to base `cor()`
+#' pairwise complete observations being true. Additional arguments to `base::cor()`
 #' are also available.
 #'
 #' @param df A data frame
