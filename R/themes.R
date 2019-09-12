@@ -23,6 +23,17 @@ theme_textbook <- list(
  ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB"))
 )
 
+theme_looseleaf<- list(
+  theme(panel.background = element_rect(fill = "white")) , 
+  theme(panel.grid.major.y = element_line(colour = "navy")) , 
+  theme(panel.grid.minor.y = element_line(colour = "navy")) ,
+  theme(panel.grid.major.x = NULL),
+  theme(panel.grid.minor.x = NULL),
+  geom_vline(xintercept = 0, color = "red")
+)
+
+
+
 pal_inova <- function(palette = c("inova"), alpha = 1) {
  palette <- match.arg(palette)
  if (alpha > 1L | alpha <= 0L) stop("alpha must be in (0, 1]")
