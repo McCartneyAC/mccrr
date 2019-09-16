@@ -271,3 +271,21 @@ solve_quadratic<-function(a,b,c){
 view <- function(...){
   View(...)
 }
+
+
+
+#' Wrap text in ggplot2
+#'
+#' taken from twitter @geokaramanis but he attributes it to an anon stack overflow postl 
+#'
+#' example: subtitle = wrapper("Really long text...", width = 80)
+#'
+#' @param x some text for a ggplot label. 
+#'
+#' @return wrapped text for a ggplot label. 
+#'
+#' @export
+wrapper <- function(x, ...){
+  paste(strwrap(x, ...), collapse = "\n")
+  }
+
