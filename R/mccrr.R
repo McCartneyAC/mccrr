@@ -289,3 +289,20 @@ wrapper <- function(x, ...){
   paste(strwrap(x, ...), collapse = "\n")
   }
 
+e <- function(){
+    fact<-function(n){
+        if (n == 0){
+            return(1)
+        } else {
+            return(n*fact(n - 1))
+        }
+    }
+    calc_e<-function(i){
+        if (i == 0) {
+            return(1)
+        } else {
+            return( 1/ fact(i) + calc_e(i - 1))
+        }
+    }
+    return(calc_e(50))
+}
