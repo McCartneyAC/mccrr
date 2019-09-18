@@ -45,7 +45,24 @@ is_extant <-function(x) any(!is.na(x))
 #' @export
 is_numeric<-function(x) any(is.numeric(x))
 
-
+#' Print an ordered list of multiples of a given number
+#'
+#' Function has two argumetns which allow you to count to a certain number by groups of another.  
+#'
+#' 
+#' Intended for use with ggplot2 scales, as in:
+#'    scale_y_continuous(limits = c(0,40), 
+#'                      breaks = count_to_by(40,5)) 
+#'
+#' @param to the number you are counting to
+#' @param by the number you wish to count by
+#' @return a list of numbers
+#'
+#' @export
+count_to_by<-function(to, by){
+    nums<-1:(to/by)
+    nums*by
+}
 
 
 #' Plot a simple linear model
