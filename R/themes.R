@@ -24,12 +24,12 @@ theme_textbook <- list(
 )
 
 theme_looseleaf<- list(
-  theme(panel.background = element_rect(fill = "white")) , 
-  theme(panel.grid.major.y = element_line(colour = "navy")) , 
-  theme(panel.grid.minor.y = element_line(colour = "navy")) ,
-  theme(panel.grid.major.x = NULL),
-  theme(panel.grid.minor.x = NULL),
-  geom_vline(xintercept = 0, color = "red") #should be something like "range"
+  ggplot2::theme(panel.background = element_rect(fill = "white")) , 
+  ggplot2::theme(panel.grid.major.y = element_line(colour = "navy")) , 
+  ggplot2::theme(panel.grid.minor.y = element_line(colour = "navy")) ,
+  ggplot2::theme(panel.grid.major.x = NULL),
+  ggplot2::theme(panel.grid.minor.x = NULL),
+  ggplot2::geom_vline(xintercept = 0, color = "red") #should be something like "range"
 )
 
 
