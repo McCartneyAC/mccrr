@@ -24,9 +24,9 @@ theme_textbook <- list(
 )
 
 theme_looseleaf<- list(
-  ggplot2::theme(panel.background = element_rect(fill = "white")) , 
-  ggplot2::theme(panel.grid.major.y = element_line(colour = "navy")) , 
-  ggplot2::theme(panel.grid.minor.y = element_line(colour = "navy")) ,
+  ggplot2::theme(panel.background = ggplot2::element_rect(fill = "white")) , 
+  ggplot2::theme(panel.grid.major.y = ggplot2::element_line(colour = "navy")) , 
+  ggplot2::theme(panel.grid.minor.y = ggplot2::element_line(colour = "navy")) ,
   ggplot2::theme(panel.grid.major.x = NULL),
   ggplot2::theme(panel.grid.minor.x = NULL),
   ggplot2::geom_vline(xintercept = 0, color = "red") #should be something like "range"
