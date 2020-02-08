@@ -14,6 +14,18 @@ vlookup<-function(this,data,key,value){
   data[[value]][m]
 }
 
+#' Print a dossier of a specific observation
+#'
+#'
+#' @param df a dataframe
+#' @param id the id variable of your data frame
+#' @param value the value of your individual dossier (must be in quotations)
+#'
+#' @export
+dossier<-function(df, id, value, ...){
+  id <- substitute(id)
+  t(filter(df, !!id  == value))
+}
 
 #' Check if a variable is has data extant
 #'
@@ -284,7 +296,9 @@ solve_quadratic<-function(a,b,c){
 }
 
 
-#view correctly
+#' view correctly
+#' 
+#' @export
 view <- function(...){
   View(...)
 }
