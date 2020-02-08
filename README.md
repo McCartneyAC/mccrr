@@ -89,7 +89,7 @@ gg_added_var(partial= mod6_restricted, extended = mod6) +
   theme_light()
 ```
 
-Inline-style: 
+
 ![gg_added_var](https://github.com/McCartneyAC/mccrr/blob/master/gg_added_var.png?raw=true)
 
 
