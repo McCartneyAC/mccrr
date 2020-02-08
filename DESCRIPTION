@@ -1,12 +1,12 @@
 Package: mccrr
 Type: Package
 Title: Personal R Package 
-Version: 0.1.0
+Version: 0.1.2
 Author: Andrew McCartney
 Maintainer: Andrew McCartney <acm9q@virginia.edu>
 Description: Personal R package for holding functions and objects I have found online or developed myself. 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2, dplyr, tibble, 
-RoxygenNote: 6.0.1
+Imports: ggplot2, dplyr, tibble, tidyr
+RoxygenNote: 7.0.2

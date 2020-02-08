@@ -8,6 +8,7 @@
 #'
 #'  @return A percent increase of the extended model's efficiency over the base model
 #'
+#'
 #' @export
 calcR2Increase <- function(baseModel, extendedModel) {
   extendedModelR2 <- var(extendedModel$fitted.values)/var(Duncan$prestige)

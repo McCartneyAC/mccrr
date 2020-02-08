@@ -6,8 +6,7 @@ theme_textbook <- function() {
 
 
 theme_andrew <-function(fam = "Raleway"){
- # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free",
- # "Montez", "Cinzel Decorative", "Kristi", "Sofia", "Love Ya Like A Sister", "FrederickatheGreat", "Special Elite")
+ # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
  ggplot2::theme(
    text = ggplot2::element_text(family = fam),
    panel.background = ggplot2::element_blank(),
@@ -23,15 +22,15 @@ theme_textbook <- list(
  ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB"))
 )
 
-theme_looseleaf<- list(
-  ggplot2::theme(panel.background = ggplot2::element_rect(fill = "white")) , 
-  ggplot2::theme(panel.grid.major.y = ggplot2::element_line(colour = "navy")) , 
-  ggplot2::theme(panel.grid.minor.y = ggplot2::element_line(colour = "navy")) ,
-  ggplot2::theme(panel.grid.major.x = NULL),
-  ggplot2::theme(panel.grid.minor.x = NULL),
-  ggplot2::geom_vline(xintercept = 0, color = "red") #should be something like "range"
-)
 
+theme_looseleaf<- list(
+   ggplot2::theme(panel.background = ggplot2::element_rect(fill = "white")) ,
+   ggplot2::theme(panel.grid.major.y = ggplot2::element_line(colour = "navy")) ,
+   ggplot2::theme(panel.grid.minor.y = ggplot2::element_line(colour = "navy")) ,
+   ggplot2::theme(panel.grid.major.x = NULL),
+   ggplot2::theme(panel.grid.minor.x = NULL),
+   ggplot2::geom_vline(xintercept = 0, color = "red") #should be something like "range"
+)
 
 
 pal_inova <- function(palette = c("inova"), alpha = 1) {

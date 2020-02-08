@@ -14,5 +14,5 @@ https://github.com/stevenpollack/stat151a/blob/master/From_Lab/Feb-26-2014.R
 @param baseModel a basic regression model
  @param extendedModel an extended version of that model (i.e. with an additional variable or more)
 
-@return A percent increase of the extended model's efficiency over the base model
+ @return A percent increase of the extended model's efficiency over the base model
 }
