@@ -4,6 +4,7 @@
 #'
 #' @param aovm An ANOVA model
 #'
+#' @export
 omega_sq <- function(aovm){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
@@ -21,6 +22,7 @@ omega_sq <- function(aovm){
 #'
 #' @param aovm An ANOVA model
 #'
+#' @export
 eta_sq<-function(aovm){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
@@ -38,6 +40,7 @@ eta_sq<-function(aovm){
 #' @param continuous That model's continuous outcome
 #' @param group That model's grouping predictor variable
 #'
+#' @export
 anova_effect<-function(aovm, continuous, group){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
