@@ -28,6 +28,12 @@ dossier<-function(df, id, value, ...){
   t(filter(df, !!id  == value))
 }
 
+#' Not In Pipe
+#'
+#" @export
+`%notin%` <- function(x, y) {
+    !(x %in% y)
+}
 
 #' Check if a variable has data extant
 #'
