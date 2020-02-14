@@ -1,9 +1,13 @@
 
 theme_textbook <- function() {
-  ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB")) +
-    ggplot2::theme_light()
+    ggplot2::theme_light()  +
+    ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB")) 
 }
 
+theme_typewriter <- function() {
+  ggplot2::theme_light()+
+  ggplot2::theme(text = ggplot2::element_text(family = "Special Elite")) 
+}
 
 theme_andrew <-function(fam = "Raleway"){
  # families <- c("Raleway","Dusha V5", "xkcd", "Fira Code", "Space Mono", "Homemade Apple", "Ink Free")
@@ -15,12 +19,6 @@ theme_andrew <-function(fam = "Raleway"){
    panel.grid.minor = ggplot2::element_line(colour = "grey98", size = 0.5)
  )
 }
-
-
-theme_textbook <- list(
- ggplot2::theme_light(),
- ggplot2::theme(text = ggplot2::element_text(family = "SimSun-ExtB"))
-)
 
 
 theme_looseleaf<- list(
