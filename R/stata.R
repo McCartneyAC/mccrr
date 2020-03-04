@@ -6,7 +6,7 @@
 #' @param df a data frame
 #'
 #' @export
-browse <- function(df) {
+stata_browse <- function(df) {
   View(df)
 }
 
@@ -18,7 +18,7 @@ browse <- function(df) {
 #' @param df a data frame
 #'
 #' @export
-summarize <- function(df, ...) {
+stata_summarize <- function(df, ...) {
   psych::describe(df, ...)
 }
 
@@ -30,7 +30,7 @@ summarize <- function(df, ...) {
 #' @param df a data frame
 #'
 #' @export
-tabulate <- function(df, grp) {
+stata_tabulate <- function(df, grp) {
   require(magrittr)
   if (is.null(grp)) {
     dim(df)
@@ -50,7 +50,7 @@ tabulate <- function(df, grp) {
 #' @param df a data frame
 #'
 #' @export
-gen <- function(df, ...) {
+stata_gen <- function(df, ...) {
   dplyr::mutate(df, ...)
 }
 
@@ -61,7 +61,7 @@ gen <- function(df, ...) {
 #'
 #'
 #' @export
-clear <- function() {
+stata_clear <- function() {
   rm(list = ls())
 }
 
@@ -73,7 +73,7 @@ clear <- function() {
 #' @param df a data frame (or any other object)
 #'
 #' @export
-drop <- function(df) {
+stata_drop <- function(df) {
   rm(df)
 }
 
@@ -85,7 +85,7 @@ drop <- function(df) {
 #' @param name the file-name of the data you wish to import
 #'
 #' @export
-use <- function(name) {
+stata_use <- function(name) {
   csv <- ".csv"
   xlsx <- ".xlsx"
   dta <- ".dta"
@@ -115,8 +115,8 @@ use <- function(name) {
 #' @return A regression summary
 #'
 #' @export
-regress <- function(df, ...) {
-  summary(
+stata_regress <- function(df, ...) {
+  stata_summary(
     lm(data = df, ...)
   )
 }
