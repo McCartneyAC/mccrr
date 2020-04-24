@@ -32,8 +32,10 @@ dossier<-function(df, id, value, ...){
 #'
 #" @export
 `%notin%` <- function(x, y) {
-    !(x %in% y)
+  !(x %in% y)
 }
+
+
 
 #' Check if a variable has data extant
 #'
