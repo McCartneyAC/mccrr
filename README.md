@@ -24,7 +24,7 @@ Here are some that I tend to use more frequently or advertise to friends when th
 ### Center
 
 Centers a variable on a given center. Should be useable within a tidy data pipe, e.g. 
-```
+```r
 hsb %>%
   center(ses, mean(ses))
 # or 
@@ -32,7 +32,7 @@ hsb %>%
   center(mathach, 5)
 ```  
 The first example above does a grand-mean center; however, often in HLM we need to group mean center. This is easily accomplished:
-```
+```r
 hsb %>% 
   group_by(schoolid) %>% 
   center(mathach, mean(mathach)) 
@@ -51,12 +51,12 @@ clinton_votes_2016    0.3040241
 ### Dossier
 Generates a dossier for a given observation in your data set. For example, if you have an id variable and an observation with an id number of "1234", then: 
 
-```
+```r
 df %>%
   dossier(id = "1234")
 ```
 Or using the data from my [`Teacher_pay`](https://github.com/McCartneyAC/teacher_pay) package: 
-```
+```r
 dat_full %>% 
    mccrr::dossier(abbreviation, "SC")
                    [,1]            
@@ -82,14 +82,14 @@ margin             "-5.785497"
 ### Paste Data
 It's probably a terrible idea to do this on a regular basis or with any important data analysis you'll ever need again, but if you want to quickly copy and paste a data set from excel into R, you can use this without any arguments, as follows:
 
-```
+```r
 dat <- paste_data()
 ``` 
 
 ### Added Variable Plot
 This should have been standardized in R long ago and arguably *ought* to have been an initial `geom_` in `ggplot2`, but here we are: Define your full model and your restricted model, then build any other ggplot formatting you want around your model later, as such: 
 
-```
+```r
 mod6 <- dat_full %>% 
   lmer(margin ~ 1 + percent_union2018*adj + log_pop + pct_white_2012 +(1|div_name), data = .)
 mod6_restricted <- dat_full %>% 
