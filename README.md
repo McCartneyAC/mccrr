@@ -1,4 +1,4 @@
-# mccrr
+# mccrr 🖋🧙‍♂️
 ## A Personal R package
 
 This package contains objects and functions that I have found via the #rstats community and some things I have developed myself. These are functions and objects I use on a regular basis and so have committed to a package for ease of access. Where possible, credit is given to the original poster.
