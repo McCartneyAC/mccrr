@@ -2,7 +2,7 @@
 % Please edit documentation in R/mccrr.R
 \name{is_extant}
 \alias{is_extant}
-\title{Check if a variable is has data extant}
+\title{Check if a variable has data extant}
 \usage{
 is_extant(x)
 }

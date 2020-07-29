@@ -1,13 +1,36 @@
-
-browse <- function(df) {
+#' Browse a Data Frame
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
+stata_browse <- function(df) {
   View(df)
 }
 
-summarize <- function(df, ...) {
+#' Summarize a Data Frame
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
+stata_summarize <- function(df, ...) {
   psych::describe(df, ...)
 }
 
-tabulate <- function(df, grp) {
+#' Tabulate units by group.
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
+stata_tabulate <- function(df, grp) {
   require(magrittr)
   if (is.null(grp)) {
     dim(df)
@@ -19,19 +42,50 @@ tabulate <- function(df, grp) {
   }
 }
 
-gen <- function(df, ...) {
+#' Generate a new variable
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#' @param df a data frame
+#'
+#' @export
+stata_gen <- function(df, ...) {
   dplyr::mutate(df, ...)
 }
 
-clear <- function() {
+#' Clear all memory
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#'
+#' @export
+stata_clear <- function() {
   rm(list = ls())
 }
 
-drop <- function(df) {
+#' Drop an object
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#' @param df a data frame (or any other object)
+#'
+#' @export
+stata_drop <- function(df) {
   rm(df)
 }
 
-use <- function(name) {
+#' Import a data set
+#'
+#' For when you forget that you're workign in R and use a STATA command instead.
+#'
+#'
+#' @param name the file-name of the data you wish to import
+#'
+#' @export
+stata_use <- function(name) {
   csv <- ".csv"
   xlsx <- ".xlsx"
   dta <- ".dta"
@@ -61,8 +115,8 @@ use <- function(name) {
 #' @return A regression summary
 #'
 #' @export
-regress <- function(df, ...) {
-  summary(
+stata_regress <- function(df, ...) {
+  stata_summary(
     lm(data = df, ...)
   )
 }
