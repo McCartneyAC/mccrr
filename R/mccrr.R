@@ -14,30 +14,8 @@ vlookup<-function(this,data,key,value){
   data[[value]][m]
 }
 
-#' Print a Dossier
-#'
-#' Takes an input of a specific id for a specific observation and returns the name and value for each variable in the dataset for that single observation. A different way of examining what your dataset looks like on a micro level.
-#'
-#' @param df a dataframe
-#' @param id the id variable of your data frame
-#' @param value the value of your individual dossier (must be in quotations)
-#'
-#' @export
-dossier<-function(df, id, value, ...){
-  id <- substitute(id)
-  t(filter(df, !!id  == value))
-}
 
-#' Not In Pipe
-#'
-#" @export
-`%notin%` <- function(x, y) {
-  !(x %in% y)
-}
-
-
-
-#' Check if a variable has data extant
+#' Check if a variable is has data extant
 #'
 #' Sometimes for longitudinal data, variables exist but have not been entered yet. To ensure forward compatibility, this function checks to see if any data have yet been entered for a given variable.
 #'
@@ -51,23 +29,24 @@ dossier<-function(df, id, value, ...){
 #' @export
 is_extant <-function(x) any(!is.na(x))
 
-
-#' Check if a variable is Numeric
+#' Plot a simple linear model
 #'
-#' Sometimes you have an unknown number of variables being piped into a function that only takes numeric vectors. This function exists to select only those which will work in the final function.
+#' https://twitter.com/katiejolly6/status/960653271080865798
+#' http://katiejolly.io/blog/2018-02-05/aes-string
 #'
-#' works best with "select_if()" as in:
-#' data %>% select_if(is_numeric)
-#'
-#'
-#' @param x a data vector
-#' @return a logical: TRUE or FALSE
+#' @param mod the linear model
+#' @param explanatory the x variable
+#' @param response the y variable
 #'
 #' @export
-is_numeric<-function(x) any(is.numeric(x))
-
-
-
+plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
+  augment(mod) %>%
+    ggplot() +
+    geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
+    geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
+    theme_solarized() +
+    theme(axis.title = element_text())
+}
 
 #' Correlation
 #'
@@ -88,43 +67,11 @@ correlate<-function(df, x, y, ...){
   return(cor(cx, cy, use = "pairwise.complete.obs", ...))
 }
 
-
-
-#' Model Diagnostics
-#'
-#' Of unknown provenance--been in my files for years now.
-#' Returns a model sumamry plus three graphs of model fit statistics/diagnostics
-#' in base R.
-#'
-#' @param model the linear model
-#'
-#' @export
-diagnostics<-function(model){
-  #run model and print specific output
-  model1<-model
-  stats<-round(c(summary(model1)$fstatistic[c(1,3)],
-                 summary(model1)$sigma,
-                 summary(model1)$r.squared,
-                 summary(model1)$adj.r.squared),3)
-  names(stats)<-c("F","DF", "Sigma","Rsq","AdjRsq")
-  l1<-list(round(summary(model1)$coefficients,3), stats)
-  names(l1)<-c("Coefficients","Stats")
-  print(l1)
-
-  #run specific diagnostic tests
-  par(mfrow=c(1,3))
-  hist(model1$residuals, main="Histogram of residuals", xlab="")
-  plot(model1, 1)
-  plot(model1, 2)
-}
-
-
 # joke package name generator from Yihui Xie @xieyihui
 tidy_name <- function(x) {
   x = tolower(substr(abbreviate(x), 1, 4))
   paste(c(x, rep('r', 5 - nchar(x))), collapse = '')
 }
-
 
 down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 
@@ -137,10 +84,10 @@ down_name <- function(x) tolower(paste0(gsub('\\s+', '', x), 'down'))
 #'
 #' @export
 paste_data <- function(header=TRUE,...) {
+  require(tibble)
   x<-read.table("clipboard",sep="\t",header=header,stringsAsFactors=TRUE,...)
-  tibble::as_tibble(x)
+  as_tibble(x)
 }
-
 # paste_data <- function (...) {
 #     readr::read_tsv(readr::clipboard(), ...)
 #  }
@@ -153,6 +100,14 @@ copy_data <- function(x,row.names=FALSE,col.names=TRUE,...) {
   write.table(x,"clipboard",sep="\t",row.names=row.names,col.names=col.names,...)
 }
 
+
+# frequent color palettes
+#' @export
+mexico_city <- c("#E12100", "#CCB200", "#114511", "#9f86cb", "#000000", "#AAAAAA")
+#' @export
+uvapal <- c("#E57200","#232D4B", "#007681","#F2CD00","#692A7E", "#84BD00","#A5ACAF", "#5C7F92","#857363","#CAC0B6")
+#' @export
+acled <- c("#274f5c", "#2a788d", "#ff8f2b","#adcfee","#ffc38a","#6ba5d4","#d0671f","#1d1d1d","#979797","#d5d5d5")
 
 
 #' Print a palette of colors
@@ -198,16 +153,17 @@ palprint<- function(name, n, type = c("discrete", "continuous")) {
 #'
 #' @export
 coinflips<-function(n = 10000, m = 100){
-  tidyr::crossing(trial = 1:n,
+  require(tidyverse)
+  crossing(trial = 1:n,
            flip = 1:m) %>%
-    dplyr::mutate(heads = rbinom(n(),1,0.5)) %>%
-    dplyr::group_by(trial) %>%
-    dplyr::mutate(next_flip = lead(heads),
+    mutate(heads = rbinom(n(),1,0.5)) %>%
+    group_by(trial) %>%
+    mutate(next_flip = lead(heads),
            hh = heads & next_flip,
            ht = heads & !next_flip) %>%
-    dplyr::summarise(first_hh = which(hh)[1] + 1,
+    summarize(first_hh = which(hh)[1] + 1,
               first_ht = which(ht)[1] + 1) %>%
-    dplyr::summarise(first_hh = mean(first_hh),
+    summarize(first_hh = mean(first_hh),
               first_ht = mean(first_ht))
 }
 
@@ -243,11 +199,11 @@ plot_freq <- function(data, group,  n=10){
   group <- enquo(group)
   data %>%
     count(!!group) %>%
-    dplyr::top_n(n) %>%
-    dplyr::mutate(group := fct_reorder(!!group, n)) %>%
-    ggplot2::ggplot(., aes_(y=quo(n))) +
-    ggplot2::geom_bar(aes(group),stat = "identity") +
-    ggplot2::coord_flip()
+    top_n(n) %>%
+    mutate(group := fct_reorder(!!group, n)) %>%
+    ggplot(., aes_(y=quo(n))) +
+    geom_bar(aes(group),stat = "identity") +
+    coord_flip()
 }
 
 #' Solve a Quadratic Equation
@@ -273,42 +229,75 @@ solve_quadratic<-function(a,b,c){
   return(result)
 }
 
-#' view correctly
-#'
-#' @export
+# valentine's day
+heart<-function(){
+  dat<- data.frame(t=seq(0, 2*pi, by=0.1) )
+  xhrt <- function(t) 16*sin(t)^3
+  yhrt <- function(t) 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
+  dat$y =yhrt(dat$t)
+  dat$x=xhrt(dat$t)
+  plot(y ~ x, data=dat, type="l", bty="n", xaxt="n", yaxt="n", ann=FALSE)
+  with(dat, polygon(x,y, col="hotpink"))
+  points(c(10,-10, -15, 15), c(-10, -10, 10, 10), pch=169, font=5)
+}
+
+#view correctly
 view <- function(...){
   View(...)
 }
 
-#' Wrap text in ggplot2
+
+
+#' Description of All variables in a Dataset
 #'
-#' taken from twitter @geokaramanis but he attributes it to an anon stack overflow postl
+#' cleans the output of `psych::describe()` and passes it into
+#' a `gt::gt()` object to make an HTML output
 #'
-#' example: subtitle = wrapper("Really long text...", width = 80)
+#' @param data your data
+#' @param group optional: your grouping variable
 #'
-#' @param x some text for a ggplot label.
-#'
-#' @return wrapped text for a ggplot label.
+#' @return an HTML object in the viewer pane (or in a shiny app or markdown document)
 #'
 #' @export
-wrapper <- function(x, ...){
-  paste(strwrap(x, ...), collapse = "\n")
-}
+description<-function(data, group = NULL, fast = TRUE, ...) {
+  grp<-paste0(deparse(substitute(group)))
+  #print(grp)
 
-e <- function(){
-  fact<-function(n){
-    if (n == 0){
-      return(1)
-    } else {
-      return(n*fact(n - 1))
-    }
-  }
-  calc_e<-function(i){
-    if (i == 0) {
-      return(1)
-    } else {
-      return( 1/ fact(i) + calc_e(i - 1))
-    }
-  }
-  return(calc_e(50))
+
+  if(is.null(group)) {
+    data %>%
+      psych::describe(fast = fast, ...) %>%
+      tibble::rownames_to_column() %>%
+      dplyr::select(-c(vars)) %>%
+      dplyr::mutate(dplyr::across(is.numeric, round, 2)) %>%
+      gt::gt() %>%
+      gt::tab_options(
+        column_labels.font.size = "small",
+        table.font.size = "small",
+        row_group.font.size = "small",
+        data_row.padding = px(3)
+      ) %>%
+      gt::tab_header(
+        title = paste0("Data Description")
+      )
+  } else {
+    data %>%
+      select_if(is.numeric) %>%
+      psych::describeBy(group = group, fast = fast, mat= TRUE, ...) %>%
+      tibble::rownames_to_column() %>%
+      dplyr::select(-c(item, vars)) %>%
+      dplyr::mutate(dplyr::across(is.numeric, round, 2)) %>%
+      dplyr::arrange(group1) %>%
+      dplyr::group_by(group1) %>%
+      gt::gt() %>%
+      gt::tab_options(
+        column_labels.font.size = "small",
+        table.font.size = "small",
+        row_group.font.size = "small",
+        data_row.padding = px(3))
+  } %>%
+    gt::tab_header(
+      title = paste0("Data Description") ,
+      subtitle = paste0("Grouped by: ",  grp )
+    )
 }

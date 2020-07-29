@@ -4,8 +4,6 @@
 #'
 #' @param aovm An ANOVA model
 #'
-#'
-#' @export
 omega_sq <- function(aovm){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]
@@ -23,7 +21,6 @@ omega_sq <- function(aovm){
 #'
 #' @param aovm An ANOVA model
 #'
-#' @export
 eta_sq<-function(aovm){
   sum_stats <- summary(aovm)[[1]]
   SSm <- sum_stats[["Sum Sq"]][1]

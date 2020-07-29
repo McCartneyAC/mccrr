@@ -1,36 +1,13 @@
-#' Browse a Data Frame
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#' @param df a data frame
-#'
-#' @export
-stata_browse <- function(df) {
+
+browse <- function(df) {
   View(df)
 }
 
-#' Summarize a Data Frame
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#' @param df a data frame
-#'
-#' @export
-stata_summarize <- function(df, ...) {
+summarize <- function(df, ...) {
   psych::describe(df, ...)
 }
 
-#' Tabulate units by group.
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#' @param df a data frame
-#'
-#' @export
-stata_tabulate <- function(df, grp) {
+tabulate <- function(df, grp) {
   require(magrittr)
   if (is.null(grp)) {
     dim(df)
@@ -42,50 +19,19 @@ stata_tabulate <- function(df, grp) {
   }
 }
 
-#' Generate a new variable
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#' @param df a data frame
-#'
-#' @export
-stata_gen <- function(df, ...) {
+gen <- function(df, ...) {
   dplyr::mutate(df, ...)
 }
 
-#' Clear all memory
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#'
-#' @export
-stata_clear <- function() {
+clear <- function() {
   rm(list = ls())
 }
 
-#' Drop an object
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#' @param df a data frame (or any other object)
-#'
-#' @export
-stata_drop <- function(df) {
+drop <- function(df) {
   rm(df)
 }
 
-#' Import a data set
-#'
-#' For when you forget that you're workign in R and use a STATA command instead.
-#'
-#'
-#' @param name the file-name of the data you wish to import
-#'
-#' @export
-stata_use <- function(name) {
+use <- function(name) {
   csv <- ".csv"
   xlsx <- ".xlsx"
   dta <- ".dta"
@@ -115,8 +61,8 @@ stata_use <- function(name) {
 #' @return A regression summary
 #'
 #' @export
-stata_regress <- function(df, ...) {
-  stata_summary(
+regress <- function(df, ...) {
+  summary(
     lm(data = df, ...)
   )
 }
