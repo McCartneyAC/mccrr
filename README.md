@@ -126,4 +126,21 @@ The package currently contains some functions that are intended to bridge the co
 https://multithreaded.stitchfix.com/blog/2017/06/15/beware-r-in-production/
 
 
+Add this on next update:
+```r
+decumulate<-function(df, var){
+  user_var<-enquo(var)
+  varname <- quo_name(user_var)
+  firstval<-df %>% 
+    # how does get_quo_expr help here?
+    dplyr::select(!!user_var) %>% 
+    dplyr::filter(row_number()==1)
 
+  mutate(df, `:=`(!!varname, (
+    # actual function here
+    c(firstval, diff(!!user_var))
+  ))) %>% 
+    unnest(!!user_var)
+}
+
+```
