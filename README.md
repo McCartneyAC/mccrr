@@ -125,6 +125,7 @@ The package currently contains some functions that are intended to bridge the co
 ## to add:
 https://multithreaded.stitchfix.com/blog/2017/06/15/beware-r-in-production/
 
+A "control F" Function that uses `filter` with `contains` (text) to find all rows containing a certain string. 
 
 Add this on next update:
 ```r
