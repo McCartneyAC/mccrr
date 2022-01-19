@@ -148,7 +148,7 @@ decumulate<-function(df, var){
 * this function is not currently working as intended in all scenarios. Needs further testing and debugging. 
 
 put this in next iteration: 
-```
+```r 
 # degrees to radians
 deg2rad<-function(d){
   return(d * (pi/180))
