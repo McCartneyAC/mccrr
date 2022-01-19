@@ -145,3 +145,24 @@ decumulate<-function(df, var){
 }
 
 ```
+* this function is not currently working as intended in all scenarios. Needs further testing and debugging. 
+
+put this in next iteration: 
+```
+# degrees to radians
+deg2rad<-function(d){
+  return(d * (pi/180))
+}
+
+# calculate haversine distance between two coordinates. 
+haversine_km<-function(lat1,lon1,lat2,lon2){
+  Rad <- 6371 # Radius of earth in km
+  dLat <- deg2rad(lat2-lat1)
+  dLon <- deg2rad(lon2-lon1)
+  a <- sin(dLat/2)*sin(dLat/2) + cos(deg2rad(lat1)) * cos(deg2rad(lat2)) * sin(dLon/2) * sin(dLon/2)
+  c <- 2 * atan2(sqrt(a), sqrt(1-a))
+  d <- Rad*c # distance in km
+  return(d)
+}
+```
+Shocked at how often haversine distance comes up. 
