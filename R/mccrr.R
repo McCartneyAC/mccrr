@@ -28,6 +28,44 @@ dossier<-function(df, id, value, ...){
   t(filter(df, !!id  == value))
 }
 
+#' Regress
+#' 
+#' Combines several of my common regression formula choices with my preferred output format (using sjPlot's tab_model() ). Be sure that when using the cluster parameter that you pipe the variable in using the . pronoun e.g. ".$classroom" to cluster at the classroom level. 
+#'
+#' @param df a dataframe
+#' @param formula a regression formula
+#' @param clusters variables for clustered standard erorrs (default is NULL)
+#' @param robust whether to use robust standard errors (default is TRUE)
+#' @param logistic whether to run logistic regression (default is FALSE; defaults to binomial)
+#' 
+#' @export 
+regress <- function(dat,
+                    formula,
+                    clusters = NULL,
+                    robust = TRUE,
+                    logistic = FALSE) {
+  if (logistic == FALSE) {
+    if (robust) {
+      mod <- estimatr::lm_robust(formula, clusters = clusters, data = dat) 
+    } else {
+      mod <- lm(formula, data = dat) 
+    }
+  } else if (logistic) {
+    if (robust) {
+      mod <- robust::glmRob(formula, data = dat, family = binomial(), method = "cubif")
+    } else {
+      mod <- glm(formula, data = dat, family = "binomial") 
+    }
+  }
+  sjPlot::tab_model(mod)
+}
+
+
+
+
+
+
+
 #' Not In Pipe
 #'
 #" @export
